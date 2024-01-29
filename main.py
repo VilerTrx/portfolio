@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -12,3 +13,17 @@ with col2:
     Hi, i am hokage
     """
     st.info(content)
+
+st.write("Below you can write anything you want to press or you can just press any key on your keyboard or something like this i dont know i just need  to wrire something")
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";")
+
+with col3:
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
